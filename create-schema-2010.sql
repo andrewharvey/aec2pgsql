@@ -11,7 +11,7 @@
 -- http://www.aec.gov.au/
 
 
-DROP SCHEMA aec_2010 CASCADE;
+DROP SCHEMA IF EXISTS aec_2010 CASCADE;
 
 CREATE SCHEMA aec_2010;
 
