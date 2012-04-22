@@ -10,6 +10,8 @@ all : clean download check_source create_schema convert
 
 clean :
 	rm -fr 2010 2007
+	psql -c "DROP SCHEMA aec_2010 CASCADE;"
+	psql -c "DROP SCHEMA aec_2007 CASCADE;"
 
 download :
 	# 2010 House of Rep Downloads page http://results.aec.gov.au/15508/Website/HouseDownloadsMenu-15508-csv.htm
