@@ -6,7 +6,7 @@
 # http://creativecommons.org/publicdomain/zero/1.0/
 
 
-all : clean download check_source create_schema convert
+all : clean download check_source create_schema load
 
 clean :
 	rm -fr 2010 2007
@@ -43,7 +43,7 @@ create_schema :
 	psql -f create-schema-2010.sql
 	psql -f create-schema-2007.sql
 
-convert :
+load :
 	cat 2010/Senate/Votes.csv | tail -n +2 | cut -d, -f1-3 | psql -c 'COPY aec_2010.division FROM STDIN WITH (FORMAT csv, HEADER);'
 	
 	cat 2010/House/Informal_Votes.csv | tail -n +2 | cut -d, -f1,4-5 | psql -c 'COPY aec_2010.house_informal_votes FROM STDIN WITH (FORMAT csv, HEADER);'
