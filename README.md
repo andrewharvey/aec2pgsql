@@ -65,3 +65,16 @@ Next just run,
 
 That will download the raw CSV files, run some tests on them, create the schema
 in PostgreSQL, and finally load the data into PostgreSQL.
+
+Building and Using a pg_dump
+=======
+Once everything has been loaded into PostgreSQL using these scripts you can
+create a PostgreSQL dump file using,
+
+    pg_dump --format plain --schema "aec_*" --no-owner | xz > aec-dump.sql.xz
+
+I host a copy of this file at http://tianjara.net/data/aec2pgsql/.
+
+It can be loaded using,
+
+    xzcat aec-dump.sql.xz | psql -f -
