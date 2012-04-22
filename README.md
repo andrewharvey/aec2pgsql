@@ -31,7 +31,7 @@ CC0 license.
 Requirements
 =======
 
-Debian Dependencies: `postgresql-client, libtext-csv-perl, wget`
+Debian Dependencies: `postgresql-client, libtext-csv-perl, wget, make`
 
 The scripts assume you have a PostgreSQL database up and running and set up your
 PG* environment variables such that a plain call to psql will give you access to
