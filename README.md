@@ -78,3 +78,18 @@ I host a copy of this file at http://tianjara.net/data/aec2pgsql/.
 It can be loaded using,
 
     xzcat aec-dump.sql.xz | psql -f -
+
+Linking with the ASGS
+=======
+The scripts within asgs-join are designed to help link the AEC data with the ASGS
+as published by the ABS. It assumes you've loaded the ASGS with [aec2pgsql](https://github.com/andrewharvey/aec2pgsql).
+
+All the scripts within this directory have targets in the Makefile.
+
+To create a view which links the AEC data with the ASGS use,
+
+    make join_asgs
+
+To create a full AEC dataset CSV export with the ASGS primary key included use,
+
+    make export_aec_asgs_csv

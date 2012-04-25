@@ -63,3 +63,12 @@ load :
 	cat 2007/Senate/Informal_Votes.csv | tail -n +2 | cut -d, -f1,4-5 | psql -c 'COPY aec_2007.senate_informal_votes FROM STDIN WITH (FORMAT csv, HEADER);'
 	cat 2007/Senate/Turnout.csv | tail -n +2 | cut -d, -f1,4-5 | psql -c 'COPY aec_2007.senate_turnout FROM STDIN WITH (FORMAT csv, HEADER);'
 	cat 2007/Senate/Votes.csv | tail -n +2 | cut -d, -f1,4-8 | psql -c 'COPY aec_2007.senate_votes FROM STDIN WITH (FORMAT csv, HEADER);'
+
+# if you have loaded the ASGS using asgs2pgsql, you can create a view which
+# joins the two tables.
+join_asgs :
+	psql -f asgs-join/create-join-view.sql
+
+# create a full dataset csv export
+export_aec_asgs_csv :
+	./asgs-join/export-to-csv.sh
